@@ -1,4 +1,4 @@
-package com.simol.exchange_batch;
+package com.simol.exchangeBatch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

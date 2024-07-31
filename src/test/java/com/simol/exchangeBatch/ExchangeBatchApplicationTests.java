@@ -1,4 +1,4 @@
-package com.simol.exchange_batch;
+package com.simol.exchangeBatch;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
