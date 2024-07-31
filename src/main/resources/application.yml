@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: ${server.profile:local}
+  batch:
+    job:
+      name: ${job.name:NONE}
+logging:
+  pattern:
+    console: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+  level:
+    root: info
+    com.juno.exchange_batch: debug
+
+--- # local
+spring:
+  config:
+    activate:
+      on-profile: local
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:exchange;mode=mysql
+      #      jdbc-url: jdbc:h2:tcp://localhost/~/project
+      username: sa
+      password:
+
+--- # dev
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${db.url:jdbc:mysql://localhost:3306/exchange}
+    username: ${db.username:exchange}
+    password: ${db.password:password}
